@@ -28,7 +28,7 @@ class ErrorHandler implements EventSubscriberInterface
     {
         $settings = $e->getSettings();
         if ($settings['error_level']) {
-            $this->errorLevel = eval("return {$settings['error_level']};");
+            $this->errorLevel = $settings['error_level'];
         }
         error_reporting($this->errorLevel);
         set_error_handler(array($this, 'errorHandler'));
